@@ -4,6 +4,7 @@ import bookService from '../services/books'
 export const Book = () => {
   const [books, setBooks] = React.useState([])
   const [filter, setFilter] = React.useState('')
+  const [sort, setSort] = React.useState('title')
 
   console.log(filter)
   console.log(books)
@@ -21,7 +22,7 @@ export const Book = () => {
   return(
     <div>
       <h2>Kirjat</h2>
-      <p>Etsi kirjoja nimen perusteella</p> <input value={filter} onChange={ev => setFilter(ev.target.value)} />
+      <b>Etsi kirjoja nimen perusteella</b> <input value={filter} onChange={ev => setFilter(ev.target.value)} />
       {rows}
     </div>
   )

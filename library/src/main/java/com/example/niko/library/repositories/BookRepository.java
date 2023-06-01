@@ -12,7 +12,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 	@Query("SELECT b FROM Book b WHERE b.authorId = ?1")
 	List<Book> findByAuthor(int i);
 	
-	@Query("SELECT b FROM Book b WHERE b.title LIKE %?1%")
-	List<Book> findByTitle(String s);
+	@Query("SELECT b FROM Book b WHERE b.title LIKE %?1% ORDER BY b.title")
+	List<Book> findByTitle(String f);
 
 }

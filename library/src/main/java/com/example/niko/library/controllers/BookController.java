@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,8 +26,8 @@ public class BookController {
 	BookRepository repo;
 	
 	@GetMapping
-	List<Book> getAll(@RequestParam(name="title") String s) {
-		return repo.findByTitle(s);
+	List<Book> getAll(@RequestParam(defaultValue="", name="title") String f){
+		return repo.findByTitle(f);
 	}
 	
 	@GetMapping("/{id}")
