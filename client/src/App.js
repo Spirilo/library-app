@@ -1,8 +1,10 @@
+import { Book } from "./components/Book";
+import { Main } from "./main/content";
 
 function App() {
   return (
     <div>
-      <h2>Moikka</h2>
+      <Main />
     </div>
   );
 }

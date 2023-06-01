@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -29,12 +31,20 @@ public class BookController {
 		return repo.findAll();
 	}
 	
+	@GetMapping("/title")
+	@ResponseBody
+	List<Book> getByTitle(@RequestParam(name="title") String s ) {
+		return repo.findByTitle(s);
+	}
+	
 	@GetMapping("/{id}")
 	Book get(@PathVariable int id) {
 		Book b = repo.findById(id).orElse(null);
 		if (b == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No book by id in database");
 		return b;
 	}
+	
+	
 	
 	@PostMapping
 	Book create(@RequestBody Book b) {
