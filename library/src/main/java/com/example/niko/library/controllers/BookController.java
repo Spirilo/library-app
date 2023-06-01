@@ -44,8 +44,11 @@ public class BookController {
 	
 	@PutMapping("/{id}")
 	Book save(@PathVariable int id, @RequestBody Book b) {
-		repo.saveAndFlush(b);
-		return b;
+		Book book = repo.findById(id).orElse(null);
+		if (b == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No book by id in database");
+		book.setTitle(b.getTitle());
+		repo.saveAndFlush(book);
+		return book;
 	}
 	
 	@DeleteMapping("/{id}") 
