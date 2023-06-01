@@ -27,13 +27,7 @@ public class BookController {
 	BookRepository repo;
 	
 	@GetMapping
-	List<Book> getAll() {
-		return repo.findAll();
-	}
-	
-	@GetMapping("/title")
-	@ResponseBody
-	List<Book> getByTitle(@RequestParam(name="title") String s ) {
+	List<Book> getAll(@RequestParam(name="title") String s) {
 		return repo.findByTitle(s);
 	}
 	
