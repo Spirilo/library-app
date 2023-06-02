@@ -1,10 +1,18 @@
 import axios from "axios";
 
-const baseUrl = "/authors"
+const baseUrl = "/author"
 
 const getAll = async () => {
   const res = await axios.get(baseUrl)
   return res.data
 }
 
-export default {getAll}
+const get = async (id) => {
+  const res = await axios.get(`${baseUrl}/books/${id}`)
+  return res.data
+}
+
+export default {
+    getAll,
+    get
+}

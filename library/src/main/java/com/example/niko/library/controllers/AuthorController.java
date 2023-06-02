@@ -19,7 +19,7 @@ import com.example.niko.library.entities.Info;
 import com.example.niko.library.repositories.AuthorRepository;
 
 @RestController
-@RequestMapping("authors")
+@RequestMapping("author")
 public class AuthorController {
 	@Autowired
 	AuthorRepository repo;
