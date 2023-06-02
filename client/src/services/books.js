@@ -3,8 +3,8 @@ import axios from "axios";
 const baseUrl = "/books"
 
 const getAll = async (s) => {
-  const b = await axios.get(`${baseUrl}?title=${s}`)
-  return b.data
+  const res = await axios.get(`${baseUrl}?filter=${s}`)
+  return res.data
 }
 
 export default {getAll};

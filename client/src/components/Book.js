@@ -4,7 +4,6 @@ import bookService from '../services/books'
 export const Book = () => {
   const [books, setBooks] = React.useState([])
   const [filter, setFilter] = React.useState('')
-  const [sort, setSort] = React.useState('title')
 
   console.log(filter)
   console.log(books)
