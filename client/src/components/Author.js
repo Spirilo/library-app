@@ -4,6 +4,7 @@ import authorService from '../services/authors'
 export const Author = () => {
   const [authors, setAuthors] = useState([])
 
+  console.log(authors)
   useEffect(() => {
     const getData = async () => {
       const authors = await authorService.getAll()
