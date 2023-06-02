@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react"
 import authorService from '../services/authors'
+import { Link, useNavigate } from "react-router-dom"
 
 export const Author = () => {
   const [authors, setAuthors] = useState([])
+
+  const navigate = useNavigate();
 
   console.log(authors)
   useEffect(() => {
@@ -14,7 +17,7 @@ export const Author = () => {
   }, [])
 
   let rows = authors.map(a => <p key={a.id}>{a.lastName}, {a.firstName}
-      <input type="button" value="Click for books"/>
+      <input type="button" value="Click for books" onClick={() => navigate("/authordetail", {state:{a}})}/>
     </p>)
 
   return(

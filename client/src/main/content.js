@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Book } from "../components/Book";
 import { MainPage } from "./mainPage"
 import { Author } from "../components/Author";
+import { AuthorDetail } from "../components/AuthorDetail";
 
 
 export const Main = () => {
@@ -18,6 +19,7 @@ export const Main = () => {
       <Route path="/" element={<MainPage />} />
       <Route path="/books" element={<Book />} />
       <Route path="/authors" element={<Author />} />
+      <Route path="/authordetail" element={<AuthorDetail />} />
     </Routes>
     </div>
   )
