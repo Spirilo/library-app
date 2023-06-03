@@ -6,6 +6,10 @@ export const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+  const tryLogin = () => {
+    
+  }
+
   return(
     <div>
       <h2>Login</h2>
