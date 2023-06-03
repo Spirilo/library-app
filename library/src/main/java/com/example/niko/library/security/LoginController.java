@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +34,18 @@ public class LoginController {
 	
 	@Autowired
 	BCryptPasswordEncoder encoder;
+	
+	@GetMapping
+	public User getLoggedInUser(){
+		SecurityContext sc = SecurityContextHolder.getContext();
+		Authentication a = sc.getAuthentication();
+		User user = new User();
+		user.setId(0L);
+		if (a.getPrincipal().getClass()!=UserPrincipal.class) return user;
+		if (a.isAuthenticated()) user=((UserPrincipal)a.getPrincipal()).getUser();
+		user.setPassword("");
+		return user;
+	}
 	
 	@PostMapping
 	@Secured("admin")  // Remove this for first few users....
@@ -67,6 +81,13 @@ public class LoginController {
 			return new ResponseEntity<LoginResponse>(new LoginResponse("Bad credentials"),HttpStatus.FORBIDDEN);
 		}
 		return new ResponseEntity<User>(userRet,HttpStatus.OK);
+	}
+	
+	@DeleteMapping
+	public LoginResponse testDelete(HttpServletRequest req) {
+		HttpSession session = req.getSession(true);		
+		session.removeAttribute(SPRING_SECURITY_CONTEXT_KEY);
+		return new LoginResponse("Cleared session");
 	}
 
 }
