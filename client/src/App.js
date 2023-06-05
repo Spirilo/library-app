@@ -5,7 +5,7 @@ import { Login } from "./components/Login";
 export const UserContext = createContext(null)
 
 function App() {
-  const [user, setUser] = useState('m')
+  const [user, setUser] = useState({})
 
   return (
     <div>

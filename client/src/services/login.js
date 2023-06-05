@@ -1,9 +1,10 @@
 import axios from "axios";
 
-baseUrl = "/login"
+const baseUrl = "/login"
 
-const login = user => {
-  
+const login = async user => {
+  const res = await axios.put(baseUrl, user)
+  return res.data
 }
 
 const logOut = () => {
