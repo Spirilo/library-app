@@ -5,13 +5,15 @@ import { Login } from "./components/Login";
 export const UserContext = createContext(null)
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
+
+  console.log(user)
 
   return (
     <div>
       <UserContext.Provider value={{user: user, setUser: setUser}} >
-        <Main />
-        <Login />
+        {user && <Main /> }
+        {!user && <Login /> }
       </UserContext.Provider>
     </div>
   );
