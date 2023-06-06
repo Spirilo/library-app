@@ -48,7 +48,7 @@ public class LoginController {
 	}
 	
 	@PostMapping
-	@Secured("admin")  // Remove this for first few users....
+	//@Secured("admin")  // Remove this for first few users....
 	public User createUser(@RequestBody User user) {
 		System.out.println("Luodaan " + user.getUsername());
 		String pw = encoder.encode(user.getPassword());

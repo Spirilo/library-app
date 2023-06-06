@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { Main } from "./main/content";
-import { Login } from "./components/Login";
+import { LoginUI } from "./main/loginUI";
 
 export const UserContext = createContext(null)
 
@@ -12,8 +12,13 @@ function App() {
   return (
     <div>
       <UserContext.Provider value={{user: user, setUser: setUser}} >
-        {user && <Main /> }
-        {!user && <Login /> }
+        {user && 
+          <div>
+            {user.username}
+            <Main /> 
+          </div>
+        }
+        {!user && <LoginUI /> }
       </UserContext.Provider>
     </div>
   );
