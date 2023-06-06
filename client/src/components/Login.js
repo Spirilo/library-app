@@ -2,6 +2,7 @@ import { UserContext } from "../App"
 import { useContext, useState } from "react"
 import loginService from '../services/login'
 import { useNavigate } from "react-router"
+import { Notification } from "./Notification"
 
 export const Login = () => {
   const {user, setUser} = useContext(UserContext)
@@ -20,13 +21,16 @@ export const Login = () => {
       navigate("/")
     } catch (err) {
       setError(err.response.data.message)
-      console.log(error)
+      setTimeout(() => {
+        setError(null)
+      }, 5000) 
     }
   }
 
   return(
     <div>
       <h2>Login</h2>
+      <Notification msg={error} />
       <p><input type="text" placeholder="Username" onChange={ev => setUsername(ev.target.value)} /></p>
       <p><input type="password" placeholder="Password" onChange={ev => setPassword(ev.target.value)} /></p>
       <button onClick={tryLogin}>Kirjaudu sisään</button>
