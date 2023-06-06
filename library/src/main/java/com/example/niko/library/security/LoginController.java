@@ -50,7 +50,6 @@ public class LoginController {
 	@PostMapping
 	//@Secured("admin")  // Remove this for first few users....
 	public User createUser(@RequestBody User user) {
-		if (user.getUsername().equals("") || user.getPassword().equals("")) return null;
 		System.out.println("Luodaan " + user.getUsername());
 		String pw = encoder.encode(user.getPassword());
 		user.setPassword(pw);

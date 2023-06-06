@@ -15,8 +15,9 @@ const getUser = () => {
   
 }
 
-const createUser = () => {
-  
+const createUser = async user => {
+  const res = await axios.post(baseUrl, user)
+  return res.data
 }
 
 export default {

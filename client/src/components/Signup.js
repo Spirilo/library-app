@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Notification } from "./Notification"
+import loginService from "../services/login"
 
 export const SignUp = () => {
   const [username, setUsername] = useState('')
@@ -7,12 +8,24 @@ export const SignUp = () => {
   const [confirmPass, setConfirmPass] = useState('')
   const [message, setMessage] = useState('')
 
-  const create = () => {
+  const create = async () => {
     if (password !== confirmPass) {
       setMessage('Passwords don`t match!')
       setTimeout(() => {
         setMessage(null)
-      },5000) 
+      },5000)
+    } else if (username === '') {
+      setMessage('No username!')
+      setTimeout(() => {
+        setMessage(null)
+      },5000)
+    } else {
+      const user = {username, password}
+      const data = await loginService.createUser(user)
+      setMessage(`Created user ${user.username}, you can log in now!`)
+      setTimeout(() => {
+        window.location.reload(false)
+      }, 5000)
     }
 
   }
