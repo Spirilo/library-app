@@ -14,7 +14,7 @@ function App() {
       <UserContext.Provider value={{user: user, setUser: setUser}} >
         {user && 
           <div>
-            {user.username}
+            Logged in as: {user.username}
             <Main /> 
           </div>
         }

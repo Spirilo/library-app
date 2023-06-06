@@ -7,8 +7,9 @@ const login = async user => {
   return res.data
 }
 
-const logOut = () => {
-
+const logOut = async () => {
+  const res = await axios.delete(baseUrl)
+  return res.data
 }
 
 const getUser = () => {

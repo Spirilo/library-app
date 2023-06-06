@@ -4,16 +4,27 @@ import { Book } from "../components/Book";
 import { MainPage } from "./mainPage"
 import { Author } from "../components/Author";
 import { AuthorDetail } from "../components/AuthorDetail";
+import loginService from "../services/login"
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 
 export const Main = () => {
+  const {user, setUser} = useContext(UserContext)
+
+  const logout = async () => {
+    const data = await loginService.logOut()
+    setUser(null)
+
+  }
   
   return(
     <div>
       <nav>
         <Link to="/">Etusivu</Link>{' '}
         <Link to="/books">Kirjat</Link>{' '}
-        <Link to="/authors">Kirjailijat</Link>
+        <Link to="/authors">Kirjailijat</Link>{'  '}
+        <button onClick={logout}>Kirjaudu ulos</button>
       </nav>
       <Routes>
         <Route path="/" element={<MainPage />} />
