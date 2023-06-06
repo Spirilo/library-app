@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react"
 import authorService from '../services/authors'
+import bookService from '../services/books'
 
 export const Admin = () => {
   const [value, setValue] = useState('')
   const [authors, setAuthors] = useState([])
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
+  const [title, setTitle] = useState('')
+  const [year, setYear] = useState(0)
+  const [authorForBook, setAuthorForBook] = useState(0)
 
   useEffect(() => {
     const getData = async () => {
@@ -23,11 +27,17 @@ export const Admin = () => {
     setLastname('')
   }
 
-  const addBook = () => {
-
+  const addBook = async () => {
+    if (authorForBook === 0) setAuthorForBook(null)
+    const book = {title: title, year: year, authorId: authorForBook}
+    const data = await bookService.create(book)
+    console.log(data)
+    setTitle('')
+    setYear('')
   }
 
-  const rows = authors.map(a => <option key={a.id}>{a.lastName}, {a.firstName}</option>)
+  console.log(authorForBook)
+  const rows = authors.map(a => <option key={a.id} value={a.id}>{a.lastName}, {a.firstName}</option>)
   return(
     <div>
     <h2>Admin view</h2>
@@ -39,13 +49,14 @@ export const Admin = () => {
     </select>
     {value === 'book' && 
       <div>
-        <p>Title: <input type="text" /></p>
-        <p>Year: <input type="number" /></p>
+        <p>Title: <input type="text" value={title} onChange={ev => setTitle(ev.target.value)} /></p>
+        <p>Year: <input type="number" value={year} onChange={ev => setYear(ev.target.value)} /></p>
         Author: 
-        <select>
+        <select value={authorForBook} onChange={ev => setAuthorForBook(ev.target.value)}>
+          <option value="">....</option>
           {rows}
         </select>
-        <p><button>Add</button></p>
+        <p><button onClick={addBook}>Add</button></p>
       </div>
     }
     {value === 'author' && 
