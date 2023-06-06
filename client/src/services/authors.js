@@ -12,7 +12,13 @@ const get = async (id) => {
   return res.data
 }
 
+const create = async author => {
+  const res = await axios.post(baseUrl, author)
+  return res.data
+}
+
 export default {
     getAll,
-    get
+    get,
+    create
 }
