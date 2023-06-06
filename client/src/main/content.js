@@ -7,6 +7,7 @@ import { AuthorDetail } from "../components/AuthorDetail";
 import loginService from "../services/login"
 import { useContext } from "react";
 import { UserContext } from "../App";
+import { Admin } from "../components/Admin";
 
 
 export const Main = () => {
@@ -23,7 +24,9 @@ export const Main = () => {
       <nav>
         <Link to="/">Etusivu</Link>{' '}
         <Link to="/books">Kirjat</Link>{' '}
-        <Link to="/authors">Kirjailijat</Link>{'  '}
+        <Link to="/authors">Kirjailijat</Link>{' '}
+        {user.role === 'admin' &&<Link to="/admin">Admin</Link>}{' '}
+        Logged in as: {user.username}{' '}
         <button onClick={logout}>Kirjaudu ulos</button>
       </nav>
       <Routes>
@@ -31,6 +34,7 @@ export const Main = () => {
         <Route path="/books" element={<Book />} />
         <Route path="/authors" element={<Author />} />
         <Route path="/authordetail" element={<AuthorDetail />} />
+        <Route path="/admin" element={<Admin />} />
     </Routes>
     </div>
   )

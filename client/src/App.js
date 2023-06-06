@@ -12,12 +12,7 @@ function App() {
   return (
     <div>
       <UserContext.Provider value={{user: user, setUser: setUser}} >
-        {user && 
-          <div>
-            Logged in as: {user.username}
-            <Main /> 
-          </div>
-        }
+        {user && <Main /> }
         {!user && <LoginUI /> }
       </UserContext.Provider>
     </div>
