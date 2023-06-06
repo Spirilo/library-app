@@ -1,6 +1,7 @@
 import { UserContext } from "../App"
 import { useContext, useState } from "react"
 import loginService from '../services/login'
+import { useNavigate } from "react-router"
 
 export const Login = () => {
   const {user, setUser} = useContext(UserContext)
@@ -8,12 +9,15 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
+  const navigate = useNavigate()
+
   const tryLogin = async () => {
     const user = {username, password}
     try {
       const data = await loginService.login(user)
       console.log(data)
       setUser(data)
+      navigate("/")
     } catch (err) {
       setError(err.response.data.message)
       console.log(error)
