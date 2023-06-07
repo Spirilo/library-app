@@ -16,7 +16,22 @@ export const Book = () => {
     getData()
   }, [filter])
 
-  let rows = books.map(b => <p key={b.id}>{b.title} {b.year}</p>)
+  const loanBook = async book => {
+    book.available = 0
+    const data = await bookService.save(book)
+    console.log(data)
+  }
+
+  const returnBook = async book => {
+    book.available = 1
+    const data = await bookService.save(book)
+    console.log(data)
+  }
+
+  let rows = books.map(b => b.available === 1 ? 
+  <p key={b.id}>{b.title} {b.year} <button onClick={() => loanBook(b)}>Lainaa</button></p>
+  :
+  <p key={b.id}>{b.title} {b.year} <b>Lainassa</b> <button onClick={() => returnBook(b)}>Palauta</button></p>)
 
   return(
     <div>

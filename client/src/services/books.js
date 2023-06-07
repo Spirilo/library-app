@@ -12,7 +12,13 @@ const create = async book => {
   return res.data
 }
 
+const save = async book => {
+  const res = await axios.put(`${baseUrl}/${book.id}`, book)
+  return res.data
+}
+
 export default {
   getAll,
-  create
+  create,
+  save
 };
