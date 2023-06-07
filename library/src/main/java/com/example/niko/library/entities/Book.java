@@ -14,6 +14,7 @@ public class Book {
 	private Integer authorId;
 	private String title;
 	private Integer year;
+	private Integer available;
 	
 	public Integer getId() {
 		return id;
@@ -38,6 +39,12 @@ public class Book {
 	}
 	public void setYear(Integer year) {
 		this.year = year;
+	}
+	public Integer getAvailable() {
+		return available;
+	}
+	public void setAvailable(Integer available) {
+		this.available = available;
 	}
 	
 	

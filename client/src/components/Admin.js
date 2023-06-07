@@ -8,7 +8,7 @@ export const Admin = () => {
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
   const [title, setTitle] = useState('')
-  const [year, setYear] = useState(0)
+  const [year, setYear] = useState('')
   const [authorForBook, setAuthorForBook] = useState(0)
 
   useEffect(() => {

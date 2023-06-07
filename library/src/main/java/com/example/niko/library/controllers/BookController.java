@@ -41,6 +41,7 @@ public class BookController {
 	
 	@PostMapping
 	Book create(@RequestBody Book b) {
+		b.setAvailable(1);
 		repo.saveAndFlush(b);
 		return b;
 	}
