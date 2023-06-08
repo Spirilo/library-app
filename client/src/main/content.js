@@ -10,6 +10,7 @@ import { UserContext } from "../App";
 import { Admin } from "../admin/AdminAdd";
 import { Loans } from "../components/Loans";
 import { AdminMain } from "../admin/AdminMain";
+import { AdminDlt } from "../admin/AdminDlt";
 
 
 export const Main = () => {
@@ -39,6 +40,7 @@ export const Main = () => {
         <Route path="/authordetail" element={<AuthorDetail />} />
         <Route path="/admin" element={<AdminMain />} />
         <Route path="/admin/add" element={<Admin />} />
+        <Route path="/admin/dlt" element={<AdminDlt />} />
         <Route path="/loans" element={<Loans />} />
     </Routes>
     </div>

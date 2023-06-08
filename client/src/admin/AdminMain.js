@@ -7,6 +7,7 @@ export const AdminMain = () => {
     <div>
       <h2>Choose what to do: </h2>
       <button onClick={() => navigate("/admin/add")}>Add books/authors</button>
+      <button onClick={() => navigate("/admin/dlt")}>Delete books/authors</button>
     </div>
   )
 }

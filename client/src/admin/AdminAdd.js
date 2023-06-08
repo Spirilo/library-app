@@ -22,7 +22,6 @@ export const Admin = () => {
   const addAuthor = async () => {
     const author = {firstName: firstname, lastName: lastname}
     const data = await authorService.create(author)
-    console.log(data)
     setFirstname('')
     setLastname('')
   }
@@ -31,12 +30,10 @@ export const Admin = () => {
     if (authorForBook === 0) setAuthorForBook(null)
     const book = {title: title, year: year, authorId: authorForBook}
     const data = await bookService.create(book)
-    console.log(data)
     setTitle('')
     setYear('')
   }
 
-  console.log(authorForBook)
   const rows = authors.map(a => <option key={a.id} value={a.id}>{a.lastName}, {a.firstName}</option>)
   return(
     <div>
