@@ -6,8 +6,8 @@ export const LoginUI = () => {
   return(
     <div>
     <nav>
-      <Link to="/login">Kirjaudu sisään</Link>{' '}
-      <Link to="/create">Luo käyttäjä</Link>
+      <Link className="link" to="/login">Kirjaudu sisään</Link>{' '}
+      <Link className="link" to="/create">Luo käyttäjä</Link>
     </nav>
       <Routes>
         <Route path="/login" element={<Login />} />

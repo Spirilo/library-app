@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { Main } from "./main/content";
 import { LoginUI } from "./main/loginUI";
+import './App.css'
 
 export const UserContext = createContext(null)
 

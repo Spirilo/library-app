@@ -24,11 +24,11 @@ export const Main = () => {
   return(
     <div>
       <nav>
-        <Link to="/">Etusivu</Link>{' '}
-        <Link to="/books">Kirjat</Link>{' '}
-        <Link to="/authors">Kirjailijat</Link>{' '}
-        <Link to="/loans">Omat lainat</Link>{' '}
-        {user.role === 'admin' &&<Link to="/admin">Admin</Link>}{' '}
+        <Link className="link" to="/">Etusivu</Link>{' '}
+        <Link className="link" to="/books">Kirjat</Link>{' '}
+        <Link className="link" to="/authors">Kirjailijat</Link>{' '}
+        <Link className="link" to="/loans">Omat lainat</Link>{' '}
+        {user.role === 'admin' &&<Link className="link" to="/admin">Admin</Link>}{' '}
         Welcome back {user.username}!{' '}
         <button onClick={logout}>Kirjaudu ulos</button>
       </nav>
