@@ -7,9 +7,6 @@ export const Book = () => {
   const [books, setBooks] = useState([])
   const [filter, setFilter] = useState('')
 
-  console.log(filter)
-  console.log(books)
-  console.log(user)
   useEffect( () => {
     const getData = async () => {
       const data = await bookService.getAll(filter)
@@ -22,14 +19,12 @@ export const Book = () => {
     book.available = 0
     book.userId = user.id
     const data = await bookService.save(book)
-    console.log(data)
   }
 
   const returnBook = async book => {
     book.available = 1
     book.userId = null
     const data = await bookService.save(book)
-    console.log(data)
   }
 
   let rows = books.map(b => b.available === 1 ? 

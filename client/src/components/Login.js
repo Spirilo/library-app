@@ -16,7 +16,6 @@ export const Login = () => {
     const user = {username, password}
     try {
       const data = await loginService.login(user)
-      console.log(data)
       setUser(data)
       navigate("/")
     } catch (err) {

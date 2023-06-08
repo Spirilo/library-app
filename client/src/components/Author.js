@@ -7,7 +7,6 @@ export const Author = () => {
 
   const navigate = useNavigate();
 
-  console.log(authors)
   useEffect(() => {
     const getData = async () => {
       const authors = await authorService.getAll()

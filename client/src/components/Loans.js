@@ -6,7 +6,6 @@ export const Loans = () => {
   const {user} = useContext(UserContext)
   const [books, setBooks] = useState([])
 
-  console.log(books)
   useEffect(() => {
     const getData = async () => {
       const data = await bookService.getUserBooks(user.id)
@@ -20,7 +19,7 @@ export const Loans = () => {
       <h2>Loans at the moment: </h2>
       {books.length === 0 && <p>Ei lainoja</p>}
       {books.map(b => (
-        <p>{b.title}</p>
+        <p key={b.id}>{b.title}</p>
       ))}
     </div>
   )
