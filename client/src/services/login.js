@@ -12,8 +12,9 @@ const logOut = async () => {
   return res.data
 }
 
-const getUser = () => {
-  
+const getUser = async () => {
+  const res = await axios.get(baseUrl)
+  return res.data
 }
 
 const createUser = async user => {

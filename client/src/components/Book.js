@@ -27,6 +27,7 @@ export const Book = () => {
 
   const returnBook = async book => {
     book.available = 1
+    book.userId = null
     const data = await bookService.save(book)
     console.log(data)
   }

@@ -37,7 +37,10 @@ public class BookController {
 		return b;
 	}
 	
-	
+	@GetMapping("/{id}/loans")
+	List<Book> getLoans(@PathVariable int id) {
+		return repo.findByUserId(id);
+	}
 	
 	@PostMapping
 	Book create(@RequestBody Book b) {
