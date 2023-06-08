@@ -7,8 +7,9 @@ import { AuthorDetail } from "../components/AuthorDetail";
 import loginService from "../services/login"
 import { useContext } from "react";
 import { UserContext } from "../App";
-import { Admin } from "../components/Admin";
+import { Admin } from "../admin/AdminAdd";
 import { Loans } from "../components/Loans";
+import { AdminMain } from "../admin/AdminMain";
 
 
 export const Main = () => {
@@ -36,7 +37,8 @@ export const Main = () => {
         <Route path="/books" element={<Book />} />
         <Route path="/authors" element={<Author />} />
         <Route path="/authordetail" element={<AuthorDetail />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={<AdminMain />} />
+        <Route path="/admin/add" element={<Admin />} />
         <Route path="/loans" element={<Loans />} />
     </Routes>
     </div>
