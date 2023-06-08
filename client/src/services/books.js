@@ -2,8 +2,13 @@ import axios from "axios";
 
 const baseUrl = "/books"
 
-const getAll = async (s) => {
+const getAll = async s => {
   const res = await axios.get(`${baseUrl}?filter=${s}`)
+  return res.data
+}
+
+const getUserBooks = async id => {
+  const res = await axios.get(`${baseUrl}/${id}/loans`)
   return res.data
 }
 
@@ -19,6 +24,7 @@ const save = async book => {
 
 export default {
   getAll,
+  getUserBooks,
   create,
   save
 };
