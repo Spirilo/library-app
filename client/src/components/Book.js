@@ -35,7 +35,10 @@ export const Book = () => {
   let rows = books.map(b => b.available === 1 ? 
   <p key={b.id}>{b.title} {b.year} <button onClick={() => loanBook(b)}>Lainaa</button></p>
   :
-  <p key={b.id}>{b.title} {b.year} <b>Lainassa</b> <button onClick={() => returnBook(b)}>Palauta</button></p>)
+  b.userId === user.id ?
+    <p key={b.id}>{b.title} {b.year} <b>Lainassa</b> <button onClick={() => returnBook(b)}>Palauta</button></p>
+    :
+    <p key={b.id}>{b.title} {b.year} <b>Lainassa</b></p>)
 
   return(
     <div>
