@@ -18,6 +18,7 @@ export const Loans = () => {
   return(
     <div>
       <h2>Loans at the moment: </h2>
+      {books.length === 0 && <p>Ei lainoja</p>}
       {books.map(b => (
         <p>{b.title}</p>
       ))}
