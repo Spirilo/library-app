@@ -9,9 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
 @Entity
+@Table(name="author")
 public class Author {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -20,7 +22,7 @@ public class Author {
 	@Column(name="firstname")
 	private String firstName;
 	@OneToMany(mappedBy="author")
-	private List<Book> book;
+	private List<Book> books;
 	
 
 	public Integer getId() {
@@ -41,12 +43,13 @@ public class Author {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public List<Book> getBook() {
-		return book;
+	public List<Book> getBooks() {
+		return books;
 	}
-	public void setBook(List<Book> book) {
-		this.book = book;
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
+	
 	
 	
 	

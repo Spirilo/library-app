@@ -9,12 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="book")
 public class Book {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name="authorid", insertable=false, updatable=false)
+	@Column(name="authorid")
 	private Integer authorId;
 	@Column(name="userid")
 	private Integer userId;
@@ -22,7 +24,7 @@ public class Book {
 	private Integer year;
 	private Integer available;
 	@ManyToOne
-	@JoinColumn(name="authorid")
+	@JoinColumn(name="authorid", insertable=false, updatable=false)
 	private Author author;
 	
 	public Integer getId() {

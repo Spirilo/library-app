@@ -7,8 +7,8 @@ const getAll = async () => {
   return res.data
 }
 
-const get = async (id) => {
-  const res = await axios.get(`${baseUrl}/books/${id}`)
+const get = async id => {
+  const res = await axios.get(`${baseUrl}/${id}`)
   return res.data
 }
 
