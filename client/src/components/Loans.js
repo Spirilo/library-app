@@ -16,7 +16,7 @@ export const Loans = () => {
 
   return(
     <div>
-      <h2>Loans at the moment: </h2>
+      <h2>Lainassa tällä hetkellä: </h2>
       {books.length === 0 && <p>Ei lainoja</p>}
       {books.map(b => (
         <p key={b.id}>{b.title}</p>

@@ -37,8 +37,8 @@ export const Admin = () => {
   const rows = authors.map(a => <option key={a.id} value={a.id}>{a.lastName}, {a.firstName}</option>)
   return(
     <div>
-    <h2>Admin view</h2>
-    <p>Choose what to add</p>
+    <h2>Admin</h2>
+    <p>Valitse mitä lisäät</p>
     <select onChange={ev => setValue(ev.target.value)} value={value}>
       <option value="">....</option>
       <option value="book">Book</option>
