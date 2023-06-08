@@ -1,11 +1,14 @@
 package com.example.niko.library.entities;
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 @Entity
@@ -16,6 +19,8 @@ public class Author {
 	private String lastName;
 	@Column(name="firstname")
 	private String firstName;
+	@OneToMany(mappedBy="author")
+	private List<Book> book;
 	
 
 	public Integer getId() {
@@ -36,6 +41,14 @@ public class Author {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	public List<Book> getBook() {
+		return book;
+	}
+	public void setBook(List<Book> book) {
+		this.book = book;
+	}
+	
+	
 	
 	
 

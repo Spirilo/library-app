@@ -1,22 +1,29 @@
 package com.example.niko.library.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Book {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name="authorid")
+	@Column(name="authorid", insertable=false, updatable=false)
 	private Integer authorId;
 	@Column(name="userid")
 	private Integer userId;
 	private String title;
 	private Integer year;
 	private Integer available;
+	@ManyToOne
+	@JoinColumn(name="authorid")
+	private Author author;
 	
 	public Integer getId() {
 		return id;
@@ -54,6 +61,16 @@ public class Book {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+	
+	@JsonIgnore
+	public Author getAuthor() {
+		return author;
+	}
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+	
+	
 	
 	
 	
