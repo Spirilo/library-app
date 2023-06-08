@@ -1,14 +1,16 @@
-import React from "react";
+import {useState, useEffect, useContext } from "react";
+import { UserContext } from "../App"
 import bookService from '../services/books'
 
 export const Book = () => {
-  const [books, setBooks] = React.useState([])
-  const [filter, setFilter] = React.useState('')
+  const {user, setUser} = useContext(UserContext)
+  const [books, setBooks] = useState([])
+  const [filter, setFilter] = useState('')
 
   console.log(filter)
   console.log(books)
-
-  React.useEffect( () => {
+  console.log(user)
+  useEffect( () => {
     const getData = async () => {
       const data = await bookService.getAll(filter)
       setBooks(data)
@@ -18,6 +20,7 @@ export const Book = () => {
 
   const loanBook = async book => {
     book.available = 0
+    book.userId = user.id
     const data = await bookService.save(book)
     console.log(data)
   }

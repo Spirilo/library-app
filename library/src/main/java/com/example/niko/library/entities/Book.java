@@ -12,6 +12,8 @@ public class Book {
 	private Integer id;
 	@Column(name="authorid")
 	private Integer authorId;
+	@Column(name="userid")
+	private Integer userId;
 	private String title;
 	private Integer year;
 	private Integer available;
@@ -46,6 +48,13 @@ public class Book {
 	public void setAvailable(Integer available) {
 		this.available = available;
 	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	
 	
 	
 

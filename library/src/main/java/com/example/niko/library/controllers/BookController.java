@@ -52,6 +52,7 @@ public class BookController {
 		if (b == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No book by id in database");
 		book.setTitle(b.getTitle());
 		book.setAvailable(b.getAvailable());
+		book.setUserId(b.getUserId());
 		repo.saveAndFlush(book);
 		return book;
 	}
