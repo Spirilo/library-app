@@ -1,5 +1,6 @@
 package com.example.niko.library.controllers;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,16 @@ public class BookController {
 	@GetMapping("/{id}/loans")
 	List<Book> getLoans(@PathVariable int id) {
 		return repo.findByUserId(id);
+	}
+	
+	@GetMapping("/toplist")
+	List<Book> getTopList() {
+		List<Book> books = repo.findAll().stream()
+				.sorted(Comparator.comparingInt(Book::getLoans)
+				.reversed())
+				.limit(5)
+				.toList();
+		return books;
 	}
 	
 	@PostMapping

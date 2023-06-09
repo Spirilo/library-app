@@ -18,13 +18,15 @@ export const Book = () => {
   const loanBook = async book => {
     book.available = 0
     book.userId = user.id
+    book.loans +=1
     const data = await bookService.save(book)
+    console.log(data)
   }
 
   const returnBook = async book => {
     book.available = 1
     book.userId = null
-    const data = await bookService.save(book)
+    await bookService.save(book)
   }
 
   let rows = books.map(b => b.available === 1 ? 
