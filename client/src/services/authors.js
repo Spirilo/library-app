@@ -17,8 +17,14 @@ const create = async author => {
   return res.data
 }
 
+const dlt = async id => {
+  const res = await axios.delete(`${baseUrl}/${id}`)
+  return res.data
+}
+
 export default {
     getAll,
     get,
-    create
+    create,
+    dlt
 }

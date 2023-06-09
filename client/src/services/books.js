@@ -22,9 +22,15 @@ const save = async book => {
   return res.data
 }
 
+const dlt = async id => {
+  const res = await axios.delete(`${baseUrl}/${id}`)
+  return res.data
+}
+
 export default {
   getAll,
   getUserBooks,
   create,
-  save
+  save,
+  dlt
 };
