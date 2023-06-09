@@ -56,6 +56,7 @@ public class BookController {
 		book.setTitle(b.getTitle());
 		book.setAvailable(b.getAvailable());
 		book.setUserId(b.getUserId());
+		book.setLoans(b.getLoans());
 		repo.saveAndFlush(book);
 		return book;
 	}

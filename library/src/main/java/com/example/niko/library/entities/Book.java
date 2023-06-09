@@ -21,6 +21,7 @@ public class Book {
 	private String title;
 	private Integer year;
 	private Integer available;
+	private Integer loans;
 	@ManyToOne
 	@JoinColumn(name="authorid", insertable=false, updatable=false)
 	private Author author;
@@ -60,6 +61,14 @@ public class Book {
 	}
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+	
+	
+	public Integer getLoans() {
+		return loans;
+	}
+	public void setLoans(Integer loans) {
+		this.loans = loans;
 	}
 	
 	@JsonIgnore
