@@ -12,6 +12,11 @@ const getUserBooks = async id => {
   return res.data
 }
 
+const getTopList = async () => {
+  const res = await axios.get(`${baseUrl}/toplist`)
+  return res.data
+}
+
 const create = async book => {
   const res = await axios.post(baseUrl, book)
   return res.data
@@ -30,6 +35,7 @@ const dlt = async id => {
 export default {
   getAll,
   getUserBooks,
+  getTopList,
   create,
   save,
   dlt
