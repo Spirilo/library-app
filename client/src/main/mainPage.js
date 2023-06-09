@@ -1,3 +1,5 @@
+import { TopList } from "../components/TopList"
+
 export const MainPage = () => {
 
   return(
@@ -6,6 +8,9 @@ export const MainPage = () => {
       <p>Voit lainata kirjoja kirjat osiosta ja hakea kirjoja nimen perusteella.</p>
       <p>Kirjailijoiden alta löydät kaikki kirjailijat ja heidän kirjansa.</p>
       <p>Omat lainat sivulta näet myös kaikki tällä hetkellä lainassasi olevat kirjat.</p>
+      <div>
+        <TopList />
+      </div>
     </div>
   )
 }
