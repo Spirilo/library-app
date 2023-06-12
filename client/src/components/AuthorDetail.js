@@ -22,11 +22,13 @@ export const AuthorDetail = () => {
   return(
     <div>
       <h2>Kirjailija</h2>
-      <h3>{author.lastName}, {author.firstName}</h3>
-      <b>Kirjailijan kirjat kirjastossa</b>
-      {author.books.map(b => (
-        <p key={b.id}>Kirja: {b.title}, julkaistu: {b.year}</p>
-      ))}
+      <div className="main">
+        <h3>{author.lastName}, {author.firstName}</h3>
+        <b>Kirjailijan kirjat kirjastossa</b>
+        {author.books.map(b => (
+          <p key={b.id}>Kirja: {b.title}, julkaistu: {b.year}</p>
+        ))}
+      </div>
     </div>
   )
 }

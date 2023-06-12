@@ -17,10 +17,12 @@ export const Loans = () => {
   return(
     <div>
       <h2>Lainassa tällä hetkellä: </h2>
-      {books.length === 0 && <p>Ei lainoja</p>}
-      {books.map(b => (
-        <p key={b.id}>{b.title}</p>
-      ))}
+      <div className="main">
+        {books.length === 0 && <p>Ei lainoja</p>}
+        {books.map(b => (
+          <p key={b.id}>{b.title}</p>
+        ))}
+      </div>
     </div>
   )
 }

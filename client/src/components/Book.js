@@ -40,8 +40,10 @@ export const Book = () => {
   return(
     <div>
       <h2>Kirjat</h2>
-      <b>Etsi kirjoja nimen perusteella</b> <input value={filter} onChange={ev => setFilter(ev.target.value)} />
-      {rows}
+      <div className="main">
+        <b>Etsi kirjoja nimen perusteella</b> <input value={filter} onChange={ev => setFilter(ev.target.value)} />
+        {rows}
+      </div>
     </div>
   )
 }

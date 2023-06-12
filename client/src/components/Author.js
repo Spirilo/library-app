@@ -22,7 +22,9 @@ export const Author = () => {
   return(
     <div>
       <h2>Kirjailijat</h2>
-      {rows}
+      <div className="main">
+        {rows}
+      </div>
     </div>
   )
 }
