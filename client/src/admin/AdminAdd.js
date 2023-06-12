@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import authorService from '../services/authors'
 import bookService from '../services/books'
+import { useNavigate } from "react-router"
 
 export const Admin = () => {
   const [value, setValue] = useState('')
@@ -10,6 +11,8 @@ export const Admin = () => {
   const [title, setTitle] = useState('')
   const [year, setYear] = useState('')
   const [authorForBook, setAuthorForBook] = useState(0)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getData = async () => {
@@ -38,31 +41,34 @@ export const Admin = () => {
   return(
     <div>
     <h2>Admin</h2>
-    <p>Valitse mitä lisäät</p>
-    <select onChange={ev => setValue(ev.target.value)} value={value}>
-      <option value="">....</option>
-      <option value="book">Book</option>
-      <option value="author">Author</option>
-    </select>
-    {value === 'book' && 
-      <div>
-        <p>Title: <input type="text" value={title} onChange={ev => setTitle(ev.target.value)} /></p>
-        <p>Year: <input type="number" value={year} onChange={ev => setYear(ev.target.value)} /></p>
-        Author: 
-        <select value={authorForBook} onChange={ev => setAuthorForBook(ev.target.value)}>
-          <option value="">....</option>
-          {rows}
-        </select>
-        <p><button onClick={addBook}>Add</button></p>
+    <div className="main">
+      <p>Valitse mitä lisäät</p>
+      <select onChange={ev => setValue(ev.target.value)} value={value}>
+        <option value="">....</option>
+        <option value="book">Book</option>
+        <option value="author">Author</option>
+      </select>
+      <button onClick={() => navigate(-1)}>Palaa</button>
+      {value === 'book' && 
+        <div>
+          <p>Title: <input type="text" value={title} onChange={ev => setTitle(ev.target.value)} /></p>
+          <p>Year: <input type="number" value={year} onChange={ev => setYear(ev.target.value)} /></p>
+          Author: 
+          <select value={authorForBook} onChange={ev => setAuthorForBook(ev.target.value)}>
+            <option value="">....</option>
+            {rows}
+          </select>
+          <p><button onClick={addBook}>Add</button></p>
+        </div>
+      }
+      {value === 'author' && 
+        <div>
+          <p>Firstname: <input type="text" value={firstname} onChange={ev => setFirstname(ev.target.value)} /></p>
+          <p>Lastname: <input type="text" value={lastname} onChange={ev => setLastname(ev.target.value)} /></p>
+          <button onClick={addAuthor}>Add</button>
+        </div>
+      }
       </div>
-    }
-    {value === 'author' && 
-      <div>
-        <p>Firstname: <input type="text" value={firstname} onChange={ev => setFirstname(ev.target.value)} /></p>
-        <p>Lastname: <input type="text" value={lastname} onChange={ev => setLastname(ev.target.value)} /></p>
-        <button onClick={addAuthor}>Add</button>
-      </div>
-    }
     </div>
   )
 }

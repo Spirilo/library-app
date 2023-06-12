@@ -6,6 +6,7 @@ export const Book = () => {
   const {user, setUser} = useContext(UserContext)
   const [books, setBooks] = useState([])
   const [filter, setFilter] = useState('')
+  const [fetch, setFetch] = useState(true)
 
   useEffect( () => {
     const getData = async () => {
@@ -13,20 +14,22 @@ export const Book = () => {
       setBooks(data)
     }
     getData()
-  }, [filter])
+  }, [filter, fetch])
 
   const loanBook = async book => {
     book.available = 0
     book.userId = user.id
     book.loans +=1
     const data = await bookService.save(book)
-    console.log(data)
+    setFetch(prevFetch => !prevFetch)
+    console.log(fetch)
   }
 
   const returnBook = async book => {
     book.available = 1
     book.userId = null
     await bookService.save(book)
+    setFetch(prevFetch => !prevFetch)
   }
 
   let rows = books.map(b => b.available === 1 ? 
