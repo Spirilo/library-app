@@ -22,7 +22,6 @@ export const Book = () => {
     book.loans +=1
     const data = await bookService.save(book)
     setFetch(prevFetch => !prevFetch)
-    console.log(fetch)
   }
 
   const returnBook = async book => {
