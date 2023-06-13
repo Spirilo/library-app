@@ -38,7 +38,7 @@ UI is pretty simple, as the plan was to not use that many dependencies.
 `grant all privileges on library.* to <your-mysql-username>;`
 - You can also keep the defaults, but then you have to make user in your MySQL command client    
 `create user 'librarian'@'localhost' identified BY 'test123';`    
-`grant all privileges on library.* to <your-mysql-username>;`
+`grant all privileges on library.* to librarian@localhost;`
 - Now you can go to \library-app\library in cmd    
 `mvnw spring-boot:run`
 - Then go to \library-app\client on other cmd    
